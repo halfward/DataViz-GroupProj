@@ -7,51 +7,112 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>Hue Knew?</h1>
-        <h2>The Ultimate Movie Quiz</h2>
-        <button id="dark-mode-toggle" class="option">Dark Mode</button>
+        <h2 style="line-height: 0;">The Ultimate Movie Quiz</h2>
+        <div id="navs">
+            <button id="modes-button" class="option">MODES</button>
+            <button id="play-button" class="option">PLAY</button>
+            <button id="stats-button" class="option">STATS</button>
+        </div>
     </header>
-    <div class="container">
-        <div class="screen screen-1">
-            
-            <br><br><br><br><br>
+
+    
+
+    <div id="start-screen">
+        <div class="start-content">
+            <h1 style="font-size: 4.5rem;">Hue Knew?</h1>
+            <br><br>
+            <h2 style="font-size: 1.8rem; font-family: 'Oswald', sans-serif; line-height: 0.2;">Created by:</h2>
+            <p style="font-family: 'Oswald', sans-serif; font-size: 1.2rem;">Hao Lee, Julia Kwon, and Vaibhav Jain</p>
+            <br><br>
+            <h2 style="font-family: 'Oswald', sans-serif; font-size: 1.8rem; line-height: 0.2;">Final project for:</h2>
+            <p style="font-family: 'Oswald', sans-serif; font-size: 1.2rem;">Data Visualization for Architecture, Urbanism, and the Humanities (2024)</p>
+            <p style="font-family: 'Oswald', sans-serif; font-size: 1.2rem;">Columbia University Graduate School of Architecture, Planning, and Preservation (GSAPP)</p>
+            <p style="font-family: 'Oswald', sans-serif; font-size: 1.2rem;">Instructor: Jia Zhang</p>
+            <br><br>
+            <button id="start-button" style="border: 2px solid black; font-family: 'Oswald', sans-serif; font-size: 1.8rem; border-radius: 55px; padding-bottom: 10px;">Start Quiz</button>
+            <br><br><br>
+            <label style="font-family:'Oswald', sans-serif; font-size: 1.2rem;">
+                <input type="checkbox" id="dont-show-again" > Don't show again
+            </label>
+        </div>
+    </div>
+
+    
+        <div id="screen-1" class="screen screen-1">
+            <div id="timer">
+                <div id="timer-background">
+                    <div id="red-background"></div>
+                </div>
+                <button id="start-reset-timer" class="option">START</button>
+            </div>
             <div id="quiz-container">
+                <div id="timer-cover"></div>
                 <div id="movie-info"></div>
                 <div id="overlay"></div>
-
-                <br><br>
-                <h2 id="stage-instruction">Stage 1: Guess the genre!</h2>
-
-                <div id="choices"></div>
                 <br>
+                <h2 id="stage-instruction" style="font-size: 2rem; margin-bottom: 0;">Stage 1: Guess the genre!</h2>
+                <div id="choices"></div>
                 <div id="feedback-genre"></div>
                 <div id="feedback-year"></div>
             </div>
         </div>
 
         <div id="screen-2" class="screen screen-2">
-            <div class="stats-container">
-                <h1>My Stats</h1>
-                <p>Attempts: <span id="attempts">0</span></p>
-                <p>Wins: <span id="wins">0</span></p>
-                <p>Win Rate: <span id="win-rate">0</span><b>%</b></p>
-                <br>
-                <p>Also log the wins/losses for the first two quizzes and do a simple chart to compare the three</p>
-            </div>
+            <div id="toggles">
+                <h2 style="font-size: 2.4rem; margin-bottom: 0;">Gameplay</h2>
+                <div class="toggle-container">
+                    <button id="infinite-button" class="option-modes"> INFINITE ♾️</button>
+                    <label class="switch">
+                        <input type="checkbox" id="game-mode-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <button id="time-button" class="option-modes" style="text-align: left;">⏱️ TIMED</button>
+                </div>
 
-            <h2>Created by:</h2>
-            <p>Hao Lee, Julia Kwon, and Vaibhav Jain</p>
-            <br><br>
-            <h2>Final project for:</h2>
-            <p>Data Visualization for Architecture, Urbanism, and the Humanities (2024)</p>
-            <p>Columbia University Graduate School of Architecture, Planning, and Preservation (GSAPP)</p>
-            <p>Instructor: Jia Zhang</p>
+                <br><br>
+
+                <h2 style="font-size: 2.4rem; margin-bottom: 0;">Difficulty</h2>
+                <div class="toggle-container">
+                    <button id="hard-button" class="option-modes">EXPERT 🏆</button>
+                    <label class="switch">
+                        <input type="checkbox" id="easy-mode-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <button id="easy-button" class="option-modes" style="text-align: left;">🎮 ROOKIE</button>
+                </div>
+
+                <br><br>
+
+                <h2 style="font-size: 2.4rem; margin-bottom: 0;">Display</h2>
+                <div class="toggle-container">
+                    <button id="light-button" class="option-modes">LIGHT 🌕</button>
+                        <label class="switch">
+                            <input type="checkbox" id="dark-mode-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    <button id="dark-button" class="option-modes" style="text-align: left;">🌒 DARK</button>
+                </div>
+            </div>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+        <div id="screen-3" class="screen screen-3">
+            <div class="stats-container">
+                <p style="font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem;">ATTEMPTS: <span id="attempts">0</span></p>
+                <p style="font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem;">WINS: <span id="wins">0</span></p>
+                <p style="font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem;">WIN RATE: <span id="win-rate">0</span><b>%</b></p>
+                <div id="chart">
+                    <canvas id="myChart" width="300" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+        
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
+</html>

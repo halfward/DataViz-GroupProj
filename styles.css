@@ -2,18 +2,42 @@
 body.dark-mode, body.dark-mode header {
     background-color: #121212;
 }
-body.dark-mode h1, body.dark-mode h2, body.dark-mode p, body.dark-mode button, body.dark-mode .stats-container p {
+body.dark-mode h1, body.dark-mode h2, body.dark-mode p, body.dark-mode .stats-container p {
     color: #e1e1e1;
 }
 body.dark-mode #feedback-year, body.dark-mode #feedback-genre{
     color: #828282;
 }
-body.dark-mode button {
-    background-color: #2d2d2d;
-    border: 1.5px solid #434343;
-}
 body.dark-mode button:hover {
     background-color: #5e5e5e;
+}
+body.dark-mode .toggle-container {
+    background-color: #555;
+    border: 2px solid #252525;
+}
+body.dark-mode .switch .slider {
+    background-color: #a0a0a0;
+}
+body.dark-mode .switch .slider:before {
+    background-color: #5e5e5e;
+}
+body.dark-mode .option {
+    background-color: #555;
+    color: #898989;
+    border: #121212 solid 2px;
+}
+body.dark-mode .option.active {
+    background-color: #555;
+    color: white;
+    border: #555 solid 2px;
+}
+body.dark-mode .option-modes {
+    color: #252525;
+    border: transparent;
+}
+body.dark-mode .option-modes.active {
+    color: #e1e1e1;
+    border: transparent;
 }
 
 
@@ -47,6 +71,45 @@ body{
     justify-content: center;
 }
 
+/* Start screen overlay */
+#start-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: black;
+    visibility: visible;
+    opacity: 1; 
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
+}
+
+/* Content of the start screen */
+.start-content {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Hide the start screen after the user chooses to not show it again */
+#start-screen.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
+}
+label {
+    font-family:'Roboto', sans-serif;
+}
+
+
 
 
 /* Scrollbar */
@@ -63,23 +126,19 @@ body{
 
 /* Paragraph Styles */
 header {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #f0f0f0; 
     z-index: 100; 
-    padding: 10px;
-    box-sizing: border-box;
     text-align: center;
 }
 h1 {
     font-size: 3rem;
     font-weight: 800;
     letter-spacing: -1px;
-    margin-top: 15px;
+    margin-top: 20px;
     margin-bottom: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     text-align: center;
     z-index: 1000;
     color: black; 
@@ -89,11 +148,11 @@ h2 {
     margin-top: 8px;
     font-weight: 700;
     font-size: 1.3rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     text-align: center;
     color: black; 
     font-weight: medium;
-    line-height: 0.2;
+    line-height: 1;
 }
 h1, h2 {
     text-align: center;
@@ -106,7 +165,7 @@ P {
 }
 
 #feedback-genre, #feedback-year {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Oswald', sans-serif;
     margin-top: 10px;
     font-size: 16px;
     font-weight: 600;
@@ -116,17 +175,220 @@ P {
     font-weight: 900;
 }
 
-/* Dark Mode Button */
+/* Buttons-------------------------------------------------------- */
+#navs {
+    display: flex; 
+    justify-content: center; 
+    padding: 10px; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+#choices {
+    margin-top: 20px;
+    display: grid;
+    flex-wrap: wrap;
+    width: 400px; 
+
+}
+
 .option {
-    position: relative;
-    padding: 5px 5px;
+    font-size: 1rem;
+    color: #888;
+    padding: 8px 16px; 
     cursor: pointer;
+    white-space: nowrap;
+    text-align: center; 
+    display: inline-block; 
+    border: 1.5px solid #e3e3e3;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-#dark-mode-toggle{
+.option:hover {
+    color: white;
+    background-color: #000000;
+}
+.option.active {
+    background-color: #000000;
+}
+
+
+.option-modes {
+    padding: 20px 20px;
+    font-size: 1.3rem;
+    text-align: right;
+    border: none;
+    background-color: transparent;
+    border: none;
+    color: #ccc;
+    width: 200px;
+    transition: color 0.3s ease;
+    box-shadow: none;
+    pointer-events: none;
+}
+.option-modes:hover {
+    color: #ccc;
+    background-color: transparent;
+}
+.option-modes.active {
+    color: black;
+    border: transparent;
+}
+
+
+
+button.active {
+    color: white;
+    border: 1.5px solid #000000;
+}
+button {
+    padding: 5px 70px;
+    margin: 5px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 20px; 
+    border: 1.5px solid rgb(234, 234, 234);
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+button:hover {
+    background-color: #e3e3e3; 
+}
+
+
+/* Toggle----------------------------------------------------------- */
+#toggles {
+    margin-top: 60px;
+    justify-content: center;
+}
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background-color: white;
+    border: 2px solid #e3e3e3;
+    border-radius: 40px;
+    width: 450px;
+}
+
+/* Hide the default checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Style the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Style the slider background */
+.switch .slider {
     position: absolute;
-    width: 110px;
-    font-size: 0.8rem;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
 }
+
+/* Style the circle inside the slider */
+.switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+
+
+/* When the checkbox is checked, move the circle */
+input:checked + .slider:before {
+    transform: translateX(21px);
+}
+
+
+
+
+
+/* Timer--------------------------- */
+#timer-background {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    display: flex;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden; 
+}
+
+#red-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #a8d4be;
+    transform: translateY(-100%); /* Starts outside the screen */
+    transition: transform 30s linear, background-color 30s linear; 
+}
+
+/* This class triggers the animation to move the red background into view */
+#red-background.active {
+    transform: translateY(0); 
+    background-color: rgb(255, 161, 161);
+}
+
+/* Remove the transition for the return to the original position */
+#red-background:not(.active) {
+    transition: none;
+}
+
+
+
+#timer-cover {
+    display: block;
+    position: fixed; 
+    top: 20vh; 
+    left: 0; 
+    width: 100vw;
+    height: 100vh;
+    background-color: #f0f0f0;
+    display: flex;
+    z-index: 1; 
+    pointer-events: none;
+}
+#timer-cover.hidden {
+    display: none;
+}
+#start-reset-timer {
+    position: fixed;
+    top: 117px;
+    left: 140px;
+}
+#start-reset-timer.active {
+    background-color: green; 
+    border-color: green;
+    color: white; 
+}
+
 
 
 #quiz-container {
@@ -134,7 +396,7 @@ P {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 #movie-info img {
@@ -157,33 +419,17 @@ P {
     z-index: -1; 
 }
 
-#choices {
-    margin-top: 20px;
-    display: grid;
-    flex-wrap: wrap;
-}
 
 
-button {
-    padding: 10px 70px;
-    margin: 5px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 20px; 
-    border: 1.5px solid rgb(234, 234, 234);
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 400px; 
-}
-button:hover {
-    background-color: #e3e3e3; 
-}
+
+
 
 
 .stats-container {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;   
+    text-align: center;
     margin-top: 50px;
     margin-bottom: 100px;
 }
@@ -195,4 +441,8 @@ button:hover {
     font-family: 'Roboto', sans-serif;
     font-size: 1.5em;
     line-height: 1.5;
+}
+#chart {
+    margin-top: 50px;
+    width: 500px;
 }
