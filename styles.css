@@ -386,8 +386,8 @@ input:checked + .slider:before {
 }
 #start-reset-timer {
     position: fixed;
-    top: 117px;
-    left: 140px;
+    top: 105px;
+    left: 10vw;
 }
 #start-reset-timer.active {
     background-color: green; 
