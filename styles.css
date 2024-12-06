@@ -324,7 +324,7 @@ button:hover {
 
 /* When the checkbox is checked, move the circle */
 input:checked + .slider:before {
-    transform: translateX(21px);
+    transform: translateX(14px);
 }
 
 
