@@ -3,7 +3,10 @@ body.dark-mode, body.dark-mode header {
     background-color: #121212;
 }
 body.dark-mode h1, body.dark-mode h2, body.dark-mode p, body.dark-mode .stats-container p {
-    color: #e1e1e1;
+    color: #87CEEB;
+}
+body.dark-mode h1 {
+    color: #FFD700;
 }
 body.dark-mode #feedback-year, body.dark-mode #feedback-genre{
     color: #828282;
