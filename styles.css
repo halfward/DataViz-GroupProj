@@ -39,6 +39,10 @@ body.dark-mode .option-modes.active {
     color: #e1e1e1;
     border: transparent;
 }
+body.dark-mode #qr_code {
+    filter: invert(0.93); 
+    mix-blend-mode: normal;
+}
 
 
 /* Body */
