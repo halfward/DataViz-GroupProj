@@ -725,13 +725,13 @@ const myChart = new Chart(ctx, {
             {
                 label: 'CORRECT',
                 data: [stage1Correct, stage2Correct, wins], // Initially set to 0, will be updated dynamically
-                backgroundColor: '#339999',
+                backgroundColor: ['#339999', '#339999', '#189a70'], // Default green, with more vibrant green for TITLE
                 borderWidth: 1
             },
             {
                 label: 'INCORRECT',
                 data: [stage1Incorrect, stage2Incorrect, attempts - wins], // Initially set to 0
-                backgroundColor: '#ea696c',
+                backgroundColor: ['#ea696c', '#ea696c', '#ec3135'], // Default red, with more vibrant red for TITLE
                 borderWidth: 1,
             }
         ]
