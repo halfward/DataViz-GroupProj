@@ -139,7 +139,7 @@ header {
     text-align: center;
 }
 h1 {
-    font-size: 3rem;
+    font-size: 2.6rem;
     font-weight: 800;
     letter-spacing: -1px;
     margin-top: 20px;
@@ -151,9 +151,9 @@ h1 {
     z-index: 1004;
 }
 h2 {
-    margin-top: 8px;
+    margin-top: 5px;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-family: 'Bebas Neue', sans-serif;
     text-align: center;
     color: black; 
@@ -272,11 +272,11 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 8px;
     background-color: white;
     border: 2px solid #e3e3e3;
     border-radius: 40px;
-    width: 450px;
+    width: 400px;
 }
 
 /* Hide the default checkbox */
@@ -406,7 +406,7 @@ input:checked + .slider:before {
 }
 
 #movie-info img {
-    height: 300px;
+    height: 240px;
     width: auto;
 }
 #movie-info {
@@ -450,5 +450,5 @@ input:checked + .slider:before {
 }
 #chart {
     margin-top: 50px;
-    width: 500px;
+    width: 400px;
 }
